@@ -1,6 +1,7 @@
 zahl = int(input("Zahl:"))
 zins1 = 10
 zins2 = 5
+
 if zahl < 20000:
     print("Abzug: 0")
 elif zahl >= 20000 and zahl <= 120000:
@@ -11,4 +12,4 @@ elif zahl >= 20000 and zahl <= 120000:
         abzug = (zins2/100) * zahl
         print("Abzug:",abzug)
 else:
-    print("Fehler")
+    print("Kein Abzug")
