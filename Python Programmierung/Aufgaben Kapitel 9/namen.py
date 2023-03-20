@@ -10,3 +10,11 @@ while True:
         break
 liste.sort()
 print(liste)
+
+laenge = len(liste) -1
+
+while True:
+    index = int(input("Geben Sie den Index ein: "))
+    if index > laenge:
+        break
+    print(liste[index])
