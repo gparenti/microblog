@@ -1,4 +1,4 @@
-2023-05-01 19:04:05,378 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-01 19:04:31,311 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,9 +15,9 @@ Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 73, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 23, in index
+    return render_template('index.html', title='Homepage', form=form, posts=posts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\templates\user.html", line 1, in top-level template code
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\templates\index.html", line 1, in top-level template code
     {% extends "base.html" %}
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\templates\base.html", line 21, in top-level template code
     <a href="{{ url_for('explore') }}">Explore</a>
@@ -42,8 +42,8 @@ Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\werkzeug\routing\map.py", line 917, in build
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'explore'. Did you mean 'edit_profile' instead?
-2023-05-01 19:04:26,422 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
-2023-05-01 19:04:28,102 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 12:04:24,534 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
+2023-05-03 12:04:29,026 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -60,9 +60,9 @@ Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 73, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 23, in index
+    return render_template('index.html', title='Homepage', form=form, posts=posts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -73,7 +73,7 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\templates\user.html", line 1, in top-level template code
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\templates\index.html", line 1, in top-level template code
     {% extends "base.html" %}
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\templates\base.html", line 21, in top-level template code
     <a href="{{ url_for('explore') }}">Explore</a>
