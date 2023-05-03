@@ -1,4 +1,4 @@
-2023-05-03 12:29:58,884 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:27:05,086 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -19,8 +19,72 @@ Traceback (most recent call last):
     page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:31:53,071 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
-2023-05-03 12:31:55,147 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:27:06,022 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+Traceback (most recent call last):
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 90, in user
+    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'POSTS_PER_PAGE'
+2023-05-03 19:27:47,569 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
+2023-05-03 19:27:49,570 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
+2023-05-03 19:27:52,066 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+Traceback (most recent call last):
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 90, in user
+    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'POSTS_PER_PAGE'
+2023-05-03 19:27:52,783 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+Traceback (most recent call last):
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 90, in user
+    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'POSTS_PER_PAGE'
+2023-05-03 19:27:54,470 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -41,7 +105,7 @@ Traceback (most recent call last):
     page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:31:55,895 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:27:55,369 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,71 +122,7 @@ Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 37, in explore
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 90, in user
     page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:31:56,150 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
-Traceback (most recent call last):
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 37, in explore
-    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:31:56,459 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
-Traceback (most recent call last):
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 37, in explore
-    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:31:56,746 ERROR: Exception on /explore [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
-Traceback (most recent call last):
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 37, in explore
-    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:40:30,195 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]

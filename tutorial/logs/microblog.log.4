@@ -1,5 +1,4 @@
-2023-05-03 12:25:13,772 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
-2023-05-03 12:25:17,659 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:11:45,355 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -16,11 +15,11 @@ Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 22, in index
-    posts = current_user.followed_posts().paginate(page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-                                                                       ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 90, in user
+    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:25:18,359 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:11:45,638 ERROR: Exception on /user/gio [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -37,33 +36,12 @@ Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 22, in index
-    posts = current_user.followed_posts().paginate(page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-                                                                       ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 90, in user
+    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:25:19,292 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
-Traceback (most recent call last):
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 22, in index
-    posts = current_user.followed_posts().paginate(page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-                                                                       ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:27:24,262 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
-2023-05-03 12:27:27,479 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:15:53,707 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
+2023-05-03 19:15:59,676 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -84,7 +62,7 @@ Traceback (most recent call last):
     page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:27:28,362 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:16:01,042 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -105,8 +83,8 @@ Traceback (most recent call last):
     page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
-2023-05-03 12:29:34,873 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
-2023-05-03 12:29:36,936 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+2023-05-03 19:18:59,674 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
+2023-05-03 19:19:19,403 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -127,3 +105,26 @@ Traceback (most recent call last):
     page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 KeyError: 'POSTS_PER_PAGE'
+2023-05-03 19:25:32,154 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
+2023-05-03 19:25:35,327 ERROR: Exception on /index [GET] [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py:1744]
+Traceback (most recent call last):
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\tutorial\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\routes.py", line 31, in index
+    page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'POSTS_PER_PAGE'
+2023-05-03 19:26:24,374 INFO: Microblog startup [in C:\Users\Gio\Documents\GitHub\IFA\tutorial\app\__init__.py:26]
