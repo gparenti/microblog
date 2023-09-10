@@ -2,7 +2,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
-from app.models import User, Post
+from app.models import User, Post, Todo
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from datetime import datetime
@@ -11,6 +11,8 @@ from datetime import datetime
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+   incomplete = Todo.query.filter_by(complete=False).all()
+   complete = Todo.query.filter_by(complete=True).all()
    form = PostForm()
    if form.validate_on_submit():
       post = Post(body=form.post.data, author=current_user)
@@ -27,7 +29,7 @@ def index():
       if posts.has_prev else None
    return render_template('index.html', title='Home', form=form,
                            posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
+                           prev_url=prev_url, incomplete=incomplete, complete=complete)
 
 @app.route('/explore')
 @login_required
@@ -96,6 +98,22 @@ def user(username):
    return render_template('user.html', user=user, posts=posts.items,
                            next_url=next_url, prev_url=prev_url, form=form)
 
+#Eigenentwicklung
+@app.route('/delete_post/<int:post_id>', methods=['POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+
+    # Check if the current user is the author of the post
+    if post.author != current_user:
+        flash('You can only delete your own posts.')
+        return redirect(url_for('index'))
+
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted.')
+    return redirect(url_for('index'))
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
@@ -154,3 +172,18 @@ def unfollow(username):
       return redirect(url_for('user', username=username))
    else:
       return redirect(url_for('index'))
+
+@app.route('/add', methods=['POST'])
+def add():
+    todo = Todo(text=request.form['todoitem'], complete=False)
+    db.session.add(todo)
+    db.session.commit()
+    return redirect(url_for('index'))
+  
+@app.route('/complete/<id>')
+def complete(id):
+  
+    todo = Todo.query.filter_by(id=int(id)).first()
+    todo.complete = True
+    db.session.commit()
+    return redirect(url_for('index'))
