@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\api",
+    "\\app\\templates",
+    "\\migrations",
+    "\\migrations\\versions",
+    "\\venv"
+  ],
+  "SelectedNode": "\\app\\models.py",
+  "PreviewInSolutionExplorer": false
+}

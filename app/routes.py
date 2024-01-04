@@ -1,54 +1,55 @@
 # app/routes.py
+from asyncio import IncompleteReadError
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
-from app.models import User, Post
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm
+from app.models import User, Todo
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from datetime import datetime
 
+#Vorlage aus dem Unterricht, aber selbst angepasst
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-   form = PostForm()
-   if form.validate_on_submit():
-      post = Post(body=form.post.data, author=current_user)
-      db.session.add(post)
-      db.session.commit()
-      flash('Your post is now live!')
-      return redirect(url_for('index'))
+   incomplete = Todo.query.filter_by(user_id=current_user.id, complete=False).all()
+   complete = Todo.query.filter_by(user_id=current_user.id, complete=True).all()
+      #return redirect(url_for('index'))
    page = request.args.get('page', 1, type=int)
-   posts = current_user.followed_posts().paginate(
-      page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-   next_url = url_for('index', page=posts.next_num) \
-      if posts.has_next else None
-   prev_url = url_for('index', page=posts.prev_num) \
-      if posts.has_prev else None
-   return render_template('index.html', title='Home', form=form,
-                           posts=posts.items, next_url=next_url,
-                           prev_url=prev_url, incomplete=incomplete, complete=complete)
+   return render_template('index.html', title='Home',
+                      incomplete=incomplete, complete=complete)
 
+#Codevorlage aus Somil_singh.Todo list app using Flask | Python.15.05.2020.Abgerufen von https://www.geeksforgeeks.org/todo-list-app-using-flask-python/
+@app.route('/add', methods=['POST'])
+def add():
+    todo_item = request.form['todoitem'].strip() 
+    #Eigenentwicklung
+    if not todo_item:  # Check if the input is empty
+        flash('Task cannot be empty!')  # Info for the User
+        return redirect(url_for('index'))
+    todo = Todo(body=request.form['todoitem'], complete=False, user_id=current_user.id)
+    db.session.add(todo)
+    db.session.commit()
+  
+    return redirect(url_for('index'))
+
+
+#Übernommen aus den Beispielen
 @app.route('/explore')
 @login_required
 def explore():
-    page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-    next_url = url_for('explore', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('explore', page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template('index.html', title='Explore', posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+    incomplete = Todo.query.filter_by(complete=False).all()
+    complete = Todo.query.filter_by(complete=True).all()
+    return render_template('index.html', title='Explore', incomplete=incomplete, complete=complete)
 
+#Übernommen aus den Beispielen
 @app.route('/login', methods=['GET', 'POST'])
 def login():
    if current_user.is_authenticated:
       return redirect(url_for('index'))
    form = LoginForm()
    if form.validate_on_submit():
-      # geänderte Zeilen:
       user = User.query.filter_by(username=form.username.data).first()
       if user is None or not user.check_password(form.password.data):
          flash('Invalid username or password')
@@ -60,59 +61,39 @@ def login():
       return redirect(url_for('index'))
    return render_template('login.html', title='Sign In', form=form)
 
-@app.route('/logout') #neu
+#Übernommen aus den Beispielen
+@app.route('/logout')
 def logout():
    logout_user()
    return redirect(url_for('index'))
 
+
+#Übernommen aus den Beispielen
 @app.route('/register', methods=['GET', 'POST'])
 def register():
    if current_user.is_authenticated:
       return redirect(url_for('index'))
    form = RegistrationForm()
    if form.validate_on_submit():
-      # Route /register wurde mit POST betreten. Prüfung, ob alles o.k. ist:
       user = User(username=form.username.data, email=form.email.data)
       user.set_password(form.password.data)
       db.session.add(user)
       db.session.commit()
       flash('Congratulations, you are now a registered user!')
       return redirect(url_for('login'))
-   # Route /register wurde mit GET betreten
    return render_template('register.html', title='Register', form=form)
 
+#Übernommen aus den Beispielen
 @app.route('/user/<username>')
 @login_required
 def user(username):
    user = User.query.filter_by(username=username).first_or_404()
    page = request.args.get('page', 1, type=int)
-   posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-      page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-   next_url = url_for('user', username=user.username, page=posts.next_num) \
-      if posts.has_next else None
-   prev_url = url_for('user', username=user.username, page=posts.prev_num) \
-      if posts.has_prev else None
+   todos = Todo.query.filter_by(user_id=current_user.id).all()
    form = EmptyForm()
-   return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url, form=form)
+   return render_template('user.html', user=user, todos=todos,
+                           form=form)
 
-#Eigenentwicklung
-@app.route('/delete_post/<int:post_id>', methods=['POST'])
-@login_required
-def delete_post(post_id):
-    post = Post.query.get_or_404(post_id)
-
-    # Check if the current user is the author of the post
-    if post.author != current_user:
-        flash('You can only delete your own posts.')
-        return redirect(url_for('index'))
-
-    db.session.delete(post)
-    db.session.commit()
-    flash('Your post has been deleted.')
-    return redirect(url_for('index'))
-
-@app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
@@ -133,40 +114,50 @@ def edit_profile():
       form.about_me.data = current_user.about_me
    return render_template('edit_profile.html', title='Edit Profile', form=form)
 
-@app.route('/follow/<username>', methods=['POST'])
+#Eigenentwicklung
+@app.route('/complete/<id>', methods=['GET','POST'])
 @login_required
-def follow(username):
-   form = EmptyForm()
-   if form.validate_on_submit():
-      user = User.query.filter_by(username=username).first()
-      if user is None:
-         flash('User {} not found.'.format(username))
-         return redirect(url_for('index'))
-      if user == current_user:
-         flash('You cannot follow yourself!')
-         return redirect(url_for('user', username=username))
-      current_user.follow(user)
-      db.session.commit()
-      flash('You are following {}!'.format(username))
-      return redirect(url_for('user', username=username))
-   else:
-      return redirect(url_for('index'))
-   
-@app.route('/unfollow/<username>', methods=['POST'])
+def complete(id):
+   todo = Todo.query.filter_by(id=int(id)).first()
+   todo.complete = True
+   todo.timestamp = datetime.utcnow()
+   db.session.commit()
+    
+   return redirect(url_for('index'))
+
+
+#Eigenentwicklung
+@app.route('/notcomplete/<id>', methods=['GET','POST'])
 @login_required
-def unfollow(username):
-   form = EmptyForm()
-   if form.validate_on_submit():
-      user = User.query.filter_by(username=username).first()
-      if user is None:
-         flash('User {} not found.'.format(username))
-         return redirect(url_for('index'))
-      if user == current_user:
-         flash ('You cannot unfollow yourself!')
-         return redirect(url_for('user', username=username))
-      current_user.unfollow(user)
-      db.session.commit()
-      flash('You are not following {}.'.format(username))
-      return redirect(url_for('user', username=username))
-   else:
-      return redirect(url_for('index'))
+def notcomplete(id):
+    todo = Todo.query.filter_by(id=int(id)).first()
+    todo.complete = False
+    todo.timestamp = datetime.utcnow()
+    db.session.commit()
+  
+    return redirect(url_for('index'))
+
+#Eigenentwicklung
+@app.route('/deletetask/<id>', methods=['GET','POST'])
+@login_required
+def deletetask(id):
+
+    todo = Todo.query.filter_by(id=int(id)).first()
+    db.session.delete(todo)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+#Eigenentwicklung
+@app.route('/edittask/<id>', methods=['GET', 'POST'])
+@login_required
+def edittask(id):
+
+    todo = Todo.query.filter_by(id=int(id)).first()
+    if request.method == 'POST':
+        # Update the task with the new data
+        todo.body = request.form.get('edited_task')
+        db.session.commit()
+        flash('Task has been updated.')
+        return redirect(url_for('index'))
+
+    return render_template('edit_task.html', todo=todo)

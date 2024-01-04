@@ -16,6 +16,9 @@ login = LoginManager(app)
 login.login_view = 'login'
 bootstrap = Bootstrap(app)
 
+from app.api import bp as api_bp
+app.register_blueprint(api_bp, url_prefix='/api')
+
 if not app.debug:
     if not os.path.exists('logs'):
         os.mkdir('logs')
@@ -24,6 +27,6 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
-    app.logger.info('Microblog startup')
+    app.logger.info('ToDoList Startup')
 
 from app import routes, models, errors
